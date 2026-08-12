@@ -8,8 +8,22 @@ let students = [
   { id: 3, name: 'Rohan', age: 19 }
 ]
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
+// Get all students
+app.get('/api/students', (request, response) => {
+  response.status(200).json(students)
+})
+
+// Get one student by ID
+app.get('/api/students/:id', (request, response) => {
+  const id = parseInt(request.params.id)
+
+  const student = students.find(student => student.id === id)
+
+  if (!student) {
+    return response.status(404).send('Student not found')
+  }
+
+  response.status(200).json(student)
 })
 
 app.listen(3000, () => {
