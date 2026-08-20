@@ -42,3 +42,26 @@ $unset: remove a fiels
 $push: add a value to an array
 $pull: remove a value from an array
 
+//increase rahul's age by 1 
+$inc:
+
+db.students.updateOne(
+    { name: "Rahul" },
+    { $inc: ( age: 1 )}
+)
+
+//remove a filed directly
+$unset
+
+db.students.updateOne(
+    { name: "Rahul" },
+    { $unset: { email: "" }}
+)
+
+//add a value to an array
+$push
+
+db.students.updateOne(
+    { name: "Ojas" },
+    { $push: (skills: "MongoDB" )}
+)
