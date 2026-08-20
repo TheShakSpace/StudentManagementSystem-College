@@ -1,0 +1,20 @@
+// check whether a  fiels is present
+
+//fiels is present
+db.students.find({
+    email: { $exists: true}
+})
+
+//fiels is missing
+db.students.find({
+    email: { $exists: flase}
+})
+
+
+//find names matching a pattern
+//find names beginning with R:
+
+db.students.find({
+    name: { $regex: "R". $options: "i"}
+})
+
