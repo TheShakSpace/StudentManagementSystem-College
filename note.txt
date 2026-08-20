@@ -29,3 +29,16 @@ db.students.find({
     age: { $gte: 20; $lte: 22}
 })
 
+//MERN STUDENTS OLDER THAN 20
+db.students.find({
+    course: "MERN",
+    age: { $gt: 20}
+})
+
+//updating operators 
+$set: chnage field value
+$inc: increase or decrease number
+$unset: remove a fiels
+$push: add a value to an array
+$pull: remove a value from an array
+
