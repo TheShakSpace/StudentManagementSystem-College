@@ -18,3 +18,14 @@ db.students.find({
     name: { $regex: "R". $options: "i"}
 })
 
+
+//students older than 20
+db.students.find({
+    age: { $gt: 20}
+})
+
+//students between 20 and 12
+db.students.find({
+    age: { $gte: 20; $lte: 22}
+})
+
