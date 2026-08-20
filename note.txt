@@ -65,3 +65,11 @@ db.students.updateOne(
     { name: "Ojas" },
     { $push: (skills: "MongoDB" )}
 )
+
+//remocve a value from an array
+$pull
+
+db.students.updateOne(
+    { name: "Ojas" },
+    { $pull: { skills: "Node.js"}}
+)
