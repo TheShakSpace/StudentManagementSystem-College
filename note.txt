@@ -127,4 +127,45 @@ db.students.aggregate({
 
 //$min works exactly like $max, but keeps the smallest value in each group - here, the youngest aggregate
 
+//SORT RESULTS
+$SORT
+//Sort results by age, descending:
 
+db.students.aggregate({
+    {
+        $sort: {
+            age: -1
+        }
+    }
+})
+
+
+//1 - ascending
+// -1 - descending
+
+$limit: // cap the number of RESULTS
+//return only the first 3, after sorting oldest first:
+
+db.students.aggregate({
+    {
+        $sort: {
+            age: -1
+        }
+    },
+    {
+        $limit: 3
+    }
+})
+
+$project: //control which fields are returned
+//only return the name aand course fields, and drop the _id field:
+
+db.students.aggregate({
+    {
+        $project: {
+            _id: 0,
+            name: 1m
+            course: 1
+        }
+    }
+})
