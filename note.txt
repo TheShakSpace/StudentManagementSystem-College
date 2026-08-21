@@ -73,3 +73,21 @@ db.students.updateOne(
     { name: "Ojas" },
     { $pull: { skills: "Node.js"}}
 )
+
+//GROUP DOCUMENTS BY FIELD
+db.students.aggregate({
+    {
+        $group: {
+            _id: "$course",
+            totalStudents: {
+                $sum: 1
+            }
+        }
+    }
+})
+
+
+//output
+{_id: "MERN", totalStudents: 2}
+{_id: "Java", totalStudents: 3}
+{_id: "Python", totalStudents: 1}
