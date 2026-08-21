@@ -91,3 +91,40 @@ db.students.aggregate({
 {_id: "MERN", totalStudents: 2}
 {_id: "Java", totalStudents: 3}
 {_id: "Python", totalStudents: 1}
+
+
+$avg, $sum, $max and $min are accumulator operators - they only appear inside $group, where they reduce every  document in a group down to a single value 
+
+//This is the same $sum operator used to count documents with $sum: 1 - but here it adds up an actual field's values instead. 
+
+$max: 
+//oldest student in each course:
+db.students.aggregate({
+    {
+        $group: {
+            _id: "$course",
+            maximumAge: {
+                $max: "$age"
+            }
+        }
+    }
+})
+
+//$max scans evry document in a group and keeps only the largest value of the field you give it - here, the oldest aggregate
+
+$min:
+//youngest age in each course:
+db.students.aggregate({
+    {
+        $group: {
+            _id: "$course",
+            minimumAge: {
+                $min: "$age"
+            }
+        }
+    }
+})
+
+//$min works exactly like $max, but keeps the smallest value in each group - here, the youngest aggregate
+
+
